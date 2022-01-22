@@ -22,9 +22,6 @@ isProcessRunning() {
 }
 
 
-#   cat <$STREAMFOLDER/$PIPENAME | ffmpeg -f ogg  -i pipe:0  -ar 44100 -f aac pipe:1 | raop_play -p 7000 -v 30 192.168.4.12 - 
-
-
 player() { 
 
     case $1 in
