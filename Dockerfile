@@ -29,24 +29,17 @@ ENV PIPENAME=${PIPENAME:-$NAME.fifo}
 ARG STREAMFOLDER
 ENV STREAMFOLDER=${STREAMFOLDER:-/$NAME}
 
-
 COPY raop_play /usr/bin/raop_play
 RUN chmod +x /usr/bin/raop_play
 
 WORKDIR $NAME
 
 COPY spk.conf ./spk.conf
-COPY file_example_WAV_10MG.wav ./file_example_WAV_10MG.wav
-
 COPY monitorPipe.sh ./monitorPipe.sh
 RUN chmod +x ./monitorPipe.sh
-
 COPY entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
-#ENTRYPOINT ["./entrypoint.sh"]
-
-CMD sh -c 'trap "exit" TERM; while true; do sleep 1; done'
-
+ENTRYPOINT ["./entrypoint.sh"]
 
 
