@@ -20,8 +20,6 @@ services:
     ports:
       - "5353:5353" # host:container
       - "7000:7000"
-    volumes:
-      - /media/Streams/airspot:/media/Streams/airspot # bind mount host:container  
     restart: always
 
 networks:
