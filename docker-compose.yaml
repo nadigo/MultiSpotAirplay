@@ -1,0 +1,32 @@
+version: '3.4'
+services:
+  AirSpot:
+    container_name: airspot
+    image: nadigo/airspot:latest
+    platform: linux/amd64
+    hostname: airspot
+    build:
+      context: .  
+      dockerfile: Dockerfile
+      args:
+        - NAME=airspot
+        - USER # future use
+        - PASS # future use
+        - BITRATE=160
+        - STREAMFOLDER=/airspot
+        - PIPENAME=airspot.fifo # name of pipe (in $STREAMSFOLDER/)
+    environment:
+      - "TZ=America/New_York" 
+    ports:
+      - "5353:5353" # host:container
+      - "7000:7000"
+    volumes:
+      - /media/Streams/airspot:/media/Streams/airspot # bind mount host:container  
+    restart: always
+
+networks:
+  default:
+    external:
+      name: MACvlan.network
+
+      
