@@ -30,7 +30,7 @@ sleep 2
 # 32-bit floating point (F32), 32-bit integer (S32)
 
 # Run monitor pipe 
-#./monitorPipe.sh &>/dev/null &
+./monitorPipe.sh &>/dev/null &
 
 # Wait for any process to exit
 wait -n
